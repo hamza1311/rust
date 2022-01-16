@@ -119,12 +119,15 @@ fn get_stack_size() -> Option<usize> {
 /// for `'static` bounds.
 #[cfg(not(parallel_compiler))]
 pub fn scoped_thread<F: FnOnce() -> R + Send, R: Send>(cfg: thread::Builder, f: F) -> R {
+    /*
     // SAFETY: join() is called immediately, so any closure captures are still
     // alive.
     match unsafe { cfg.spawn_unchecked(f) }.unwrap().join() {
         Ok(v) => v,
         Err(e) => panic::resume_unwind(e),
     }
+    */
+    f()
 }
 
 #[cfg(not(parallel_compiler))]
@@ -254,7 +257,8 @@ pub fn get_codegen_backend(
             filename if filename.contains('.') => load_backend_from_dylib(filename.as_ref()),
             #[cfg(feature = "llvm")]
             "llvm" => rustc_codegen_llvm::LlvmCodegenBackend::new,
-            backend_name => get_codegen_sysroot(maybe_sysroot, backend_name),
+            // backend_name => get_codegen_sysroot(maybe_sysroot, backend_name),
+            _ => rustc_codegen_cranelift::__rustc_codegen_backend()
         }
     });
 
