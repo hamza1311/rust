@@ -6,19 +6,19 @@
 
 #[macro_use]
 extern crate rustc_middle;
-extern crate rustc_ast;
-extern crate rustc_codegen_ssa;
-extern crate rustc_data_structures;
-extern crate rustc_errors;
-extern crate rustc_fs_util;
-extern crate rustc_hir;
-extern crate rustc_incremental;
-extern crate rustc_index;
+// extern crate rustc_ast;
+// extern crate rustc_codegen_ssa;
+// extern crate rustc_data_structures;
+// extern crate rustc_errors;
+// extern crate rustc_fs_util;
+use rustc_hir;
+// extern crate rustc_incremental;
+// extern crate rustc_index;
 // extern crate rustc_interface;
-extern crate rustc_metadata;
-extern crate rustc_session;
-extern crate rustc_span;
-extern crate rustc_target;
+// extern crate rustc_metadata;
+// extern crate rustc_session;
+// extern crate rustc_span;
+// extern crate rustc_target;
 
 // This prevents duplicating functions and statics that are already part of the host rustc process.
 // #[allow(unused_extern_crates)]

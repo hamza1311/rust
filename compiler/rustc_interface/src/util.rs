@@ -258,7 +258,7 @@ pub fn get_codegen_backend(
             #[cfg(feature = "llvm")]
             "llvm" => rustc_codegen_llvm::LlvmCodegenBackend::new,
             // backend_name => get_codegen_sysroot(maybe_sysroot, backend_name),
-            _ => rustc_codegen_cranelift::__rustc_codegen_backend()
+            _ => rustc_codegen_cranelift::__rustc_codegen_backend
         }
     });
 
